@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Coach proposal response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "mode",
+    "status",
+    "snapshot_id",
+    "expected_plan_version",
+    "message",
+    "questions",
+    "recommendations",
+    "limitations"
+  ],
+  "properties": {
+    "mode": {
+      "enum": [
+        "daily",
+        "training",
+        "meal",
+        "review"
+      ]
+    },
+    "status": {
+      "enum": [
+        "proposal",
+        "needs_input",
+        "insufficient_data",
+        "safety_pause"
+      ]
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_plan_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1
+    },
+    "questions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "action",
+          "reason",
+          "evidence_ids",
+          "uncertainty",
+          "requires_confirmation"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "uncertainty": {
+            "type": "string"
+          },
+          "requires_confirmation": {
+            "const": true
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "safety_pause"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "recommendations": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "needs_input"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "questions": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

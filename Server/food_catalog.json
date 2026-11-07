@@ -1,0 +1,409 @@
+{
+  "version": "USDA-SR-Legacy-2018-curated-v1",
+  "source": "USDA FoodData Central, SR Legacy April 2018. CC0. Generic foods, not brand-specific.",
+  "foods": [
+    {
+      "id": "rice",
+      "name": "熟白米饭（中粒，无额外油）",
+      "fdc_id": 168930,
+      "description": "Rice, white, medium-grain, cooked, unenriched",
+      "per100g": {
+        "fatG": 0.21,
+        "carbsG": 28.59,
+        "energyKcal": 130.0,
+        "proteinG": 2.38
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/168930/nutrients"
+    },
+    {
+      "id": "chicken",
+      "name": "熟去皮鸡胸肉（烤，无额外酱汁）",
+      "fdc_id": 171477,
+      "description": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+      "per100g": {
+        "fatG": 3.57,
+        "carbsG": 0.0,
+        "energyKcal": 165.0,
+        "proteinG": 31.02
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/171477/nutrients"
+    },
+    {
+      "id": "egg",
+      "name": "水煮全蛋",
+      "fdc_id": 173424,
+      "description": "Egg, whole, cooked, hard-boiled",
+      "per100g": {
+        "energyKcal": 155.0,
+        "proteinG": 12.58,
+        "fatG": 10.61,
+        "carbsG": 1.12
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/173424/nutrients"
+    },
+    {
+      "id": "fried_egg",
+      "name": "煎全蛋（数据库已含常见用油，不再重复加油）",
+      "fdc_id": 173423,
+      "description": "Egg, whole, cooked, fried",
+      "per100g": {
+        "proteinG": 13.61,
+        "fatG": 14.84,
+        "carbsG": 0.83,
+        "energyKcal": 196.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/173423/nutrients"
+    },
+    {
+      "id": "tofu",
+      "name": "普通豆腐（非油炸）",
+      "fdc_id": 172476,
+      "description": "Tofu, raw, regular, prepared with calcium sulfate",
+      "per100g": {
+        "carbsG": 1.87,
+        "fatG": 4.78,
+        "energyKcal": 76.0,
+        "proteinG": 8.08
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/172476/nutrients"
+    },
+    {
+      "id": "broccoli",
+      "name": "水煮西兰花",
+      "fdc_id": 169967,
+      "description": "Broccoli, cooked, boiled, drained, without salt",
+      "per100g": {
+        "fatG": 0.41,
+        "proteinG": 2.38,
+        "carbsG": 7.18,
+        "energyKcal": 35.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/169967/nutrients"
+    },
+    {
+      "id": "potato",
+      "name": "去皮水煮土豆",
+      "fdc_id": 170440,
+      "description": "Potatoes, boiled, cooked without skin, flesh, without salt",
+      "per100g": {
+        "carbsG": 20.01,
+        "energyKcal": 86.0,
+        "fatG": 0.1,
+        "proteinG": 1.71
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/170440/nutrients"
+    },
+    {
+      "id": "banana",
+      "name": "香蕉可食部分",
+      "fdc_id": 173944,
+      "description": "Bananas, raw",
+      "per100g": {
+        "carbsG": 22.84,
+        "energyKcal": 89.0,
+        "proteinG": 1.09,
+        "fatG": 0.33
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/173944/nutrients"
+    },
+    {
+      "id": "apple",
+      "name": "带皮苹果可食部分",
+      "fdc_id": 171688,
+      "description": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
+      "per100g": {
+        "carbsG": 13.81,
+        "energyKcal": 52.0,
+        "fatG": 0.17,
+        "proteinG": 0.26
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/171688/nutrients"
+    },
+    {
+      "id": "milk",
+      "name": "全脂牛奶",
+      "fdc_id": 171265,
+      "description": "Milk, whole, 3.25% milkfat, with added vitamin D",
+      "per100g": {
+        "fatG": 3.25,
+        "carbsG": 4.8,
+        "energyKcal": 61.0,
+        "proteinG": 3.15
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/171265/nutrients"
+    },
+    {
+      "id": "oil",
+      "name": "大豆食用油",
+      "fdc_id": 171411,
+      "description": "Oil, soybean, salad or cooking",
+      "per100g": {
+        "proteinG": 0.0,
+        "fatG": 100.0,
+        "carbsG": 0.0,
+        "energyKcal": 884.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/171411/nutrients"
+    },
+    {
+      "id": "sugar",
+      "name": "白砂糖",
+      "fdc_id": 169655,
+      "description": "Sugars, granulated",
+      "per100g": {
+        "proteinG": 0.0,
+        "fatG": 0.0,
+        "energyKcal": 387.0,
+        "carbsG": 99.98
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/169655/nutrients"
+    },
+    {
+      "id": "pork",
+      "name": "熟猪里脊瘦肉（烤）",
+      "fdc_id": 168250,
+      "description": "Pork, fresh, loin, tenderloin, separable lean only, cooked, roasted",
+      "per100g": {
+        "proteinG": 26.17,
+        "fatG": 3.51,
+        "energyKcal": 143.0,
+        "carbsG": 0.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/168250/nutrients"
+    },
+    {
+      "id": "noodles",
+      "name": "煮熟鸡蛋面（有盐，无额外油）",
+      "fdc_id": 168919,
+      "description": "Noodles, egg, cooked, enriched, with added salt",
+      "per100g": {
+        "proteinG": 4.54,
+        "fatG": 2.07,
+        "carbsG": 25.16,
+        "energyKcal": 138.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/168919/nutrients"
+    },
+    {
+      "id": "tomato",
+      "name": "生番茄",
+      "fdc_id": 170457,
+      "description": "Tomatoes, red, ripe, raw, year round average",
+      "per100g": {
+        "carbsG": 3.89,
+        "energyKcal": 18.0,
+        "fatG": 0.2,
+        "proteinG": 0.88
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/170457/nutrients"
+    },
+    {
+      "id": "salmon",
+      "name": "熟养殖大西洋三文鱼（干热）",
+      "fdc_id": 175168,
+      "description": "Fish, salmon, Atlantic, farmed, cooked, dry heat",
+      "per100g": {
+        "fatG": 12.35,
+        "carbsG": 0.0,
+        "proteinG": 22.1,
+        "energyKcal": 206.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/175168/nutrients"
+    },
+    {
+      "id": "bread",
+      "name": "普通白面包",
+      "fdc_id": 174924,
+      "description": "Bread, white, commercially prepared (includes soft bread crumbs)",
+      "per100g": {
+        "fatG": 3.33,
+        "carbsG": 49.42,
+        "energyKcal": 266.0,
+        "proteinG": 8.85
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/174924/nutrients"
+    },
+    {
+      "id": "soy_sauce",
+      "name": "普通酱油（大豆与小麦）",
+      "fdc_id": 174277,
+      "description": "Soy sauce made from soy and wheat (shoyu)",
+      "per100g": {
+        "fatG": 0.57,
+        "carbsG": 4.93,
+        "proteinG": 8.14,
+        "energyKcal": 53.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/174277/nutrients"
+    },
+    {
+      "id": "bok_choy",
+      "name": "水煮小白菜，无盐",
+      "fdc_id": 170391,
+      "description": "Cabbage, chinese (pak-choi), cooked, boiled, drained, without salt",
+      "per100g": {
+        "carbsG": 1.78,
+        "energyKcal": 12.0,
+        "fatG": 0.16,
+        "proteinG": 1.56
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/170391/nutrients"
+    },
+    {
+      "id": "mushroom",
+      "name": "水煮白蘑菇",
+      "fdc_id": 169252,
+      "description": "Mushrooms, white, cooked, boiled, drained, without salt",
+      "per100g": {
+        "proteinG": 2.17,
+        "fatG": 0.47,
+        "carbsG": 5.29,
+        "energyKcal": 28.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/169252/nutrients"
+    },
+    {
+      "id": "beef",
+      "name": "熟碎牛肉（90%瘦，煎熟）",
+      "fdc_id": 171794,
+      "description": "Beef, ground, 90% lean meat / 10% fat, crumbles, cooked, pan-browned",
+      "per100g": {
+        "energyKcal": 230.0,
+        "carbsG": 0.0,
+        "proteinG": 28.45,
+        "fatG": 12.04
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/171794/nutrients"
+    },
+    {
+      "id": "yogurt",
+      "name": "原味全脂酸奶",
+      "fdc_id": 171284,
+      "description": "Yogurt, plain, whole milk",
+      "per100g": {
+        "energyKcal": 61.0,
+        "proteinG": 3.47,
+        "fatG": 3.25,
+        "carbsG": 4.66
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/171284/nutrients"
+    },
+    {
+      "id": "oatmeal",
+      "name": "燕麦粥（水煮，无盐）",
+      "fdc_id": 173905,
+      "description": "Cereals, oats, regular and quick, unenriched, cooked with water (includes boiling and microwaving), without salt",
+      "per100g": {
+        "proteinG": 2.54,
+        "fatG": 1.52,
+        "carbsG": 12.0,
+        "energyKcal": 71.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/173905/nutrients"
+    },
+    {
+      "id": "oats_dry",
+      "name": "干燕麦片",
+      "fdc_id": 173904,
+      "description": "Cereals, oats, regular and quick, not fortified, dry",
+      "per100g": {
+        "fatG": 6.52,
+        "carbsG": 67.7,
+        "energyKcal": 379.0,
+        "proteinG": 13.15
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/173904/nutrients"
+    },
+    {
+      "id": "brown_rice",
+      "name": "熟糙米",
+      "fdc_id": 169704,
+      "description": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+      "per100g": {
+        "proteinG": 2.74,
+        "fatG": 0.97,
+        "carbsG": 25.58,
+        "energyKcal": 123.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/169704/nutrients"
+    },
+    {
+      "id": "pasta",
+      "name": "熟意大利面，无盐无酱",
+      "fdc_id": 168928,
+      "description": "Pasta, cooked, unenriched, without added salt",
+      "per100g": {
+        "fatG": 0.93,
+        "proteinG": 5.8,
+        "carbsG": 30.86,
+        "energyKcal": 158.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/168928/nutrients"
+    },
+    {
+      "id": "carrot",
+      "name": "水煮胡萝卜",
+      "fdc_id": 170394,
+      "description": "Carrots, cooked, boiled, drained, without salt",
+      "per100g": {
+        "fatG": 0.18,
+        "proteinG": 0.76,
+        "carbsG": 8.22,
+        "energyKcal": 35.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/170394/nutrients"
+    },
+    {
+      "id": "cucumber",
+      "name": "带皮生黄瓜",
+      "fdc_id": 168409,
+      "description": "Cucumber, with peel, raw",
+      "per100g": {
+        "carbsG": 3.63,
+        "energyKcal": 15.0,
+        "fatG": 0.11,
+        "proteinG": 0.65
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/168409/nutrients"
+    },
+    {
+      "id": "shrimp",
+      "name": "熟虾可食部分",
+      "fdc_id": 175180,
+      "description": "Crustaceans, shrimp, cooked",
+      "per100g": {
+        "proteinG": 23.98,
+        "fatG": 0.28,
+        "carbsG": 0.2,
+        "energyKcal": 99.0
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/175180/nutrients"
+    },
+    {
+      "id": "sweet_potato",
+      "name": "烤红薯可食部分",
+      "fdc_id": 168483,
+      "description": "Sweet potato, cooked, baked in skin, flesh, without salt",
+      "per100g": {
+        "carbsG": 20.71,
+        "energyKcal": 90.0,
+        "fatG": 0.15,
+        "proteinG": 2.01
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/168483/nutrients"
+    },
+    {
+      "id": "peanut",
+      "name": "无盐干烤花生",
+      "fdc_id": 173806,
+      "description": "Peanuts, all types, dry-roasted, without salt",
+      "per100g": {
+        "proteinG": 24.35,
+        "carbsG": 21.26,
+        "energyKcal": 587.0,
+        "fatG": 49.66
+      },
+      "source_url": "https://fdc.nal.usda.gov/food-details/173806/nutrients"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+# Build products and local tools
+.build/
+.swiftpm/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+DerivedData/
+build/
+*.app/
+*.ipa
+*.xcarchive/
+*.dSYM/
+.DS_Store
+._*
+xcuserdata/
+*.xcuserstate
+/XuXu [0-9]*.xcodeproj/
+
+# Credentials, signing assets and runtime data
+.env
+.env.*
+!.env.example
+*.p12
+*.pfx
+*.pem
+*.key
+*.mobileprovision
+*.sqlite*
+*.db
+*.db-shm
+*.db-wal
+records-v*.json
+*backup*.json
+secrets/
+credentials/
+
+# Private conversation context and device/deployment evidence stay local.
+/development-state.json
+/validation-status.json
+/docs/local/
+/docs/requirements-*.md
+/docs/releases/
+/docs/reviews/
+/docs/ui-v08/
+/docs/training-program-v05.md

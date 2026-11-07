@@ -1,0 +1,10 @@
+.build
+**/__pycache__
+**/.venv
+**/.env*
+**/secrets
+**/*.pem
+**/*.key
+**/*.p12
+XuXu.xcodeproj
+Sources

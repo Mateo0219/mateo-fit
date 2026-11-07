@@ -1,0 +1,254 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 3000,
+      "pattern": "\\S"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "role": {
+            "enum": [
+              "user",
+              "assistant"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 800
+          }
+        },
+        "required": [
+          "role",
+          "content"
+        ]
+      },
+      "maxItems": 8
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "snapshot_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9._-]+$"
+        },
+        "generated_at": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "expected_plan_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80,
+                "pattern": "^[A-Za-z0-9._-]+$"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "observed_at": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 60
+              },
+              "source_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 64,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "quality": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "id",
+              "summary",
+              "unit",
+              "observed_at",
+              "source_id",
+              "revision",
+              "quality"
+            ]
+          },
+          "maxItems": 64
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80,
+                "pattern": "^[A-Za-z0-9._-]+$"
+              },
+              "action": {
+                "enum": [
+                  "adjustToday",
+                  "review"
+                ]
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 600
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80,
+                  "pattern": "^[A-Za-z0-9._-]+$"
+                },
+                "maxItems": 24,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "action",
+              "title",
+              "detail",
+              "evidence_ids"
+            ]
+          },
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "snapshot_id",
+        "generated_at",
+        "timezone",
+        "expected_plan_version",
+        "facts",
+        "candidates"
+      ]
+    },
+    "consent_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "boolean"
+        },
+        "health_summary": {
+          "type": "boolean"
+        },
+        "memory_summary": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "text",
+        "health_summary",
+        "memory_summary"
+      ]
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "contract_version": {
+      "const": 2
+    },
+    "memory_learning": {
+      "type": "boolean"
+    },
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "effort": {
+          "enum": [
+            "none",
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "web_mode": {
+          "enum": [
+            "off",
+            "search",
+            "research"
+          ]
+        }
+      },
+      "required": [
+        "effort",
+        "web_mode"
+      ]
+    }
+  },
+  "required": [
+    "request_id",
+    "text",
+    "history",
+    "snapshot",
+    "consent_scope",
+    "contract_version",
+    "memory_learning"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "assistant-request v0.9 contract 2"
+}

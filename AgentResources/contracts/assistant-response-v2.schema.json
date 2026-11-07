@@ -1,0 +1,428 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "expected_plan_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "status": {
+      "enum": [
+        "proposal",
+        "needs_input",
+        "insufficient_data",
+        "safety_pause"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1800
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      },
+      "maxItems": 1
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "daily",
+              "training",
+              "adjustToday",
+              "meal",
+              "foodIdeas",
+              "weight",
+              "forecast",
+              "sleep",
+              "review",
+              "records",
+              "settings",
+              "recordWeight"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 600
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[A-Za-z0-9._-]+$"
+            },
+            "maxItems": 24,
+            "uniqueItems": true
+          },
+          "candidate_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80,
+                "pattern": "^[A-Za-z0-9._-]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "action",
+          "title",
+          "detail",
+          "evidence_ids",
+          "candidate_id"
+        ]
+      },
+      "maxItems": 4
+    },
+    "contract_version": {
+      "const": 2
+    },
+    "operations": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "remember",
+              "updateMemory",
+              "forgetMemory",
+              "updateToday",
+              "logSet",
+              "correctSet",
+              "finishWorkout",
+              "logMeal",
+              "correctMeal",
+              "substituteExercise"
+            ]
+          },
+          "source_text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3000
+          },
+          "evidence_ids": {
+            "type": "array",
+            "maxItems": 64,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          "target_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 100
+          },
+          "content": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "topic": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 40
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 60
+          },
+          "exercise": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 100
+          },
+          "exercise_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 80
+          },
+          "kg": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000
+          },
+          "reps": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 500
+          },
+          "count": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 10
+          },
+          "minutes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 120
+          },
+          "energy": {
+            "enum": [
+              "状态正常",
+              "有点疲惫",
+              "不适或困倦",
+              null
+            ]
+          },
+          "context": {
+            "enum": [
+              "健身房",
+              "在家",
+              "乒乓球",
+              "休息",
+              null
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "source_text",
+          "evidence_ids"
+        ]
+      }
+    },
+    "citation_ids": {
+      "type": "array",
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^S[1-9][0-9]?$"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^S[1-9][0-9]?$"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "read": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url",
+          "read"
+        ]
+      }
+    },
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "effort": {
+          "enum": [
+            "none",
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "web_mode": {
+          "enum": [
+            "off",
+            "search",
+            "research"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "model_calls": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "search_calls": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "fetch_calls": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "prompt_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "completion_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cache_hit_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "reasoning_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "elapsed_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reasoning_present": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "effort",
+        "web_mode",
+        "model",
+        "model_calls",
+        "search_calls",
+        "fetch_calls",
+        "prompt_tokens",
+        "completion_tokens",
+        "cache_hit_tokens",
+        "reasoning_tokens",
+        "elapsed_ms",
+        "reasoning_present"
+      ]
+    }
+  },
+  "required": [
+    "request_id",
+    "snapshot_id",
+    "expected_plan_version",
+    "status",
+    "message",
+    "questions",
+    "cards",
+    "contract_version",
+    "operations"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "safety_pause"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cards": {
+            "maxItems": 0
+          },
+          "operations": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "needs_input"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "questions": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "assistant-response v0.9 contract 2"
+}

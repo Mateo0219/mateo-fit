@@ -1,0 +1,43 @@
+services:
+  mateo-agent:
+    build:
+      context: ..
+      dockerfile: Server/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8787:8787"
+    environment:
+      XUXU_PROVIDER_KEY_FILE: /run/secrets/provider_key
+      XUXU_CLIENT_TOKEN_FILE: /run/secrets/client_token
+      XUXU_MODEL: deepseek-flash
+      XUXU_API_URL: https://api.deepseek.com/chat/completions
+      XUXU_MAX_DAILY_REQUESTS: "-1"
+      XUXU_MAX_DAILY_PROVIDER_CALLS: "-1"
+      XUXU_MAX_MINUTE_REQUESTS: "-1"
+      XUXU_LIMIT_DB: /data/limits.sqlite3
+    secrets:
+      - provider_key
+      - client_token
+    volumes:
+      - limits:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 384m
+    cpus: 1.0
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+secrets:
+  provider_key:
+    file: ./secrets/provider_key
+  client_token:
+    file: ./secrets/client_token
+volumes:
+  limits:

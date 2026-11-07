@@ -1,0 +1,68 @@
+{
+  "status": "design_only_not_registered",
+  "version": "0.1",
+  "model_read_tools": [
+    {
+      "name": "get_context",
+      "input": [
+        "mode",
+        "date_range",
+        "requested_fields"
+      ],
+      "output": "snapshot defined in data-contract.md; scope filtered by authenticated user and consent"
+    },
+    {
+      "name": "lookup_food",
+      "input": [
+        "query",
+        "region",
+        "preparation"
+      ],
+      "output": "food IDs, per-unit nutrients, allergens, source/version, unknown fields"
+    },
+    {
+      "name": "calculate_meal",
+      "input": [
+        "food_id + quantity + unit + raw_or_cooked"
+      ],
+      "output": "calculation_id, input provenance, nutrient estimates/ranges, completeness"
+    },
+    {
+      "name": "calculate_trends",
+      "input": [
+        "record_ids",
+        "window",
+        "timezone"
+      ],
+      "output": "calculation_id, comparable sample coverage, trend, uncertainty"
+    }
+  ],
+  "app_only_write_operations": [
+    {
+      "name": "commit_confirmed_record",
+      "input": [
+        "record_draft",
+        "confirmation_event_id",
+        "idempotency_key"
+      ],
+      "output": "persisted record_id and revision read back from transaction"
+    },
+    {
+      "name": "apply_confirmed_plan",
+      "input": [
+        "proposal_id",
+        "snapshot_id",
+        "expected_plan_version",
+        "confirmation_event_id",
+        "idempotency_key"
+      ],
+      "output": "new plan version or stale_conflict"
+    }
+  ],
+  "server_rules": [
+    "Authenticate every request and enforce ownership in code.",
+    "Model outputs cannot create valid confirmation_event_id.",
+    "Raw nutrition and health records never become system instructions.",
+    "No tool permits arbitrary URLs, shell commands, SQL or filesystem access."
+  ]
+}

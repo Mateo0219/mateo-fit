@@ -1,0 +1,157 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "expected_plan_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "status": {
+      "enum": [
+        "proposal",
+        "needs_input",
+        "insufficient_data",
+        "safety_pause"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1800
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      },
+      "maxItems": 1
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "daily",
+              "training",
+              "adjustToday",
+              "meal",
+              "foodIdeas",
+              "weight",
+              "forecast",
+              "sleep",
+              "review",
+              "records",
+              "settings",
+              "recordWeight"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 600
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[A-Za-z0-9._-]+$"
+            },
+            "maxItems": 24,
+            "uniqueItems": true
+          },
+          "candidate_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80,
+                "pattern": "^[A-Za-z0-9._-]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "action",
+          "title",
+          "detail",
+          "evidence_ids",
+          "candidate_id"
+        ]
+      },
+      "maxItems": 4
+    }
+  },
+  "required": [
+    "request_id",
+    "snapshot_id",
+    "expected_plan_version",
+    "status",
+    "message",
+    "questions",
+    "cards"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "safety_pause"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cards": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "needs_input"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "questions": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "assistant-response v0.7"
+}

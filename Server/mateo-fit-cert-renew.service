@@ -1,0 +1,8 @@
+[Unit]
+Description=Renew Mateo Fit IP certificate and reload nginx
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/mateo-fit-certbot/bin/certbot renew --quiet --no-random-sleep-on-renew --deploy-hook "/usr/sbin/nginx -t && /usr/bin/systemctl reload nginx"
+TimeoutStartSec=300

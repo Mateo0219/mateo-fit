@@ -1,0 +1,42 @@
+[Unit]
+Description=Mateo Fit private nutrition agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mateofit
+Group=mateofit
+WorkingDirectory=/opt/mateo-fit-agent/Server
+ExecStart=/opt/mateo-fit-agent/venv/bin/uvicorn service:app --host 127.0.0.1 --port 8787 --workers 1 --no-access-log
+Restart=on-failure
+RestartSec=5
+LoadCredential=deepseek:/etc/mateo-fit-agent/provider.key
+LoadCredential=client:/etc/mateo-fit-agent/client.token
+Environment=XUXU_PROVIDER_KEY_FILE=%d/deepseek
+Environment=XUXU_CLIENT_TOKEN_FILE=%d/client
+Environment=XUXU_API_URL=https://api.deepseek.com/chat/completions
+Environment=XUXU_MODEL=deepseek-flash
+Environment=XUXU_LIMIT_DB=/var/lib/mateo-fit-agent/limits.sqlite3
+Environment=XUXU_MAX_DAILY_REQUESTS=-1
+Environment=XUXU_MAX_DAILY_PROVIDER_CALLS=-1
+Environment=XUXU_MAX_MINUTE_REQUESTS=-1
+Environment=PYTHONDONTWRITEBYTECODE=1
+StateDirectory=mateo-fit-agent
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+MemoryMax=384M
+CPUQuota=100%
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target
